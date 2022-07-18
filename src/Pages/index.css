@@ -1,0 +1,14 @@
+.vertical-horizontal-center {
+    /* border: 1px solid; */
+    min-height: 50%;
+    /* Fallback for browsers do NOT support vh unit */
+    min-height: 50vh;
+    /* These two lines are counted as one :-)       */
+
+    display: flex;
+    /* default is row */
+    justify-content: center;
+    /* align horizontally */
+    align-items: flex-end;
+    /* align vertically */
+}

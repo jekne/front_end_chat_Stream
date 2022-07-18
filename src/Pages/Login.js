@@ -4,9 +4,10 @@ import { Form } from "react-bootstrap";
 import {Col} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import {Button} from "react-bootstrap";
-import axios from "axios";
 import { apiUrl } from "../Config/constants";
 import { StreamChat } from "stream-chat";
+import { useNavigate } from 'react-router-dom'
+import { getTokenAndConnectUser } from "../Utils/getTokenAndConnectUser";
 
 
 
@@ -14,54 +15,37 @@ const API_KEY =  "9q8cp29sk4fh";
 const PORT = process.env.REACT_APP_PORT;
 const client = StreamChat.getInstance(API_KEY);
 
-export default function Login (){
+export default function Login ({setConnectUser}){
     const [userId, setUserId] = useState("");
+      const [error, setError] = useState(null);
+
+    // let history = useNavigate()
 
 
-    const loginUser = async (userId) => {
+    // const loginUser = async (userId) => {
    
-        const response = await axios.get(`${apiUrl}/token?userId=${userId}`);
-            const token= response.data.token
-        //   const pokeResponse = await axios.get(
-        //     "https://pokeapi.co/api/v2/pokemon?limit=151"
-        //   );
-        //   setUserId(pokeResponse.data.results);
-      console.log("my response", response.data)
-        const chatClient = await client.connectUser(
-            { id: userId },
-          token
-          );
-          console.log(" chat client",chatClient)
-        return chatClient;
-      };
-console.log("the login user ",loginUser)
+    //     const response = await axios.get(`${apiUrl}/token?userId=${userId}`);
+    //         const token= response.data.token
+
+    // //   console.log("my response", response.data)
+    //     const chatClient = await client.connectUser(
+    //         { id: userId },
+    //       token
+    //       );
+    //       console.log(" chat client",chatClient)
+    //     return chatClient;
+    //   };
+// console.log("the login user ",loginUser)
     
     const submitForm = (event) => {
       event.preventDefault();
-    loginUser(userId)
+    // loginUser(userId)
+    // history("/chat")
         // dispatch(createLogin(userId));
-      // console.log(" userId",userId) 
+      console.log(" userId",userId) 
+        getTokenAndConnectUser(userId, setConnectUser, setError);
       };
 
-
-//         useEffect(() => {
-  
-//     if (!loginUser) {
-//       playersSorted = playersSorted.filter((player) => {
-//         return player.level?.levelRateFixed.includes(selectedLevel);
-//       });
-//     }
-//     if (location) {
-//       playersSorted = playersSorted.filter((player) => {
-//         return player.locationId === location;
-//       });
-//     }
-//     setSortedPlayers(playersSorted);
-//     dispatch(fetchAllLocations());
-//   }, [dispatch, sortBy, selectedLevel, players, location]);
-      // useEffect(() => {
-      //   dispatch(createLogin());
-      // }, [dispatch]);
 
     return (
     <div>
