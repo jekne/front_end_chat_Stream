@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
-
-// Components
-// import ChatList from "../../Components/ChatList/ChatList";
-// import ChatBox from "../../Components/ChatBox/ChatBox";
 import ChatBox from "../Components/ChatBox/ChatBox";
 import ChatList from "../Components/ChatList/ChatList";
 
 // Functions
 // import { queryChannels } from "../../Utils/queryChannels";
-import { queryChannels } from "../Utils/queryChannels";
+import { queryChannels } from "../Utils/queryChannels.js";
+import { newQueryChannels } from "../Utils/queryChannels.js";
 
 export default function Lobby({ connectUser }) {
   const userId = connectUser.me.id;
@@ -30,7 +27,7 @@ export default function Lobby({ connectUser }) {
   return (
     <div className="container border my-3">
       <h3>Hello {userId}</h3>
-      <a href="/">Logout</a> {/* It makes refresh the page */}
+      <a href="/">Logout</a> 
       <div className="row border" style={{ height: "85vh" }}>
         {channels && <ChatList channels={channels} setChannel={setChannel} />}
         {channel?.data.id && <ChatBox channel={channel} userId={userId} />}

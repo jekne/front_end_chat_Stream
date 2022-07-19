@@ -28,7 +28,7 @@ export const queryChannels = async (setChannel, setChannels, userId) => {
     const sort = { last_message_at: -1 };
 
     const result = await chatClient.queryChannels(filter, sort);
-    // console.log("queryChannels called");
+    console.log("queryChannels called");
     setChannels(result);
     setChannel(result[0]);
   } catch (error) {
@@ -36,3 +36,29 @@ export const queryChannels = async (setChannel, setChannels, userId) => {
   }
 };
 
+// export const newQueryChannels = async(setChannel, setChannels, userId)=>{
+//   try {
+//     const filter = { type: 'messaging', members: { $in: ['thierry'] } };
+// const sort = [{ last_message_at: -1 }];
+
+// const channels = await chatClient.queryChannels(filter, sort, {
+//     watch: true, // this is the default
+//     state: true,
+// });
+
+// channels.map((channel) => {
+//         console.log(channel.data.name, channel.cid)
+//     })
+//     const result = await chatClient.queryChannels(filter, sort);
+//     console.log("queryChannels called");
+//     setChannels(result);
+//     setChannel(result[0]);
+
+    
+//   } catch (error) {
+//       console.log("query channels failed", error);
+    
+//   }
+// }
+
+// newQueryChannels("johann").then((r)=>console.log(r))

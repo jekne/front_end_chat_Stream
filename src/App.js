@@ -5,7 +5,6 @@ import './App.css';
 import Login from './Pages/Login';
 import { Routes, Route } from 'react-router-dom';
 import ChatPage from './Pages/ChatPage';
-import Join from './Pages/Join';
 import { useState } from 'react';
 import Lobby from './Pages/Lobby';
 
@@ -35,7 +34,7 @@ function App() {
   const [connectUser, setConnectUser] = useState("");
   console.log("what is connectUser!!!!!!!!!?", connectUser);
   return connectUser ? (
-    <Lobby connectUser={connectUser} />
+    <ChatPage connectUser={connectUser} />
   ) : (
     <Login setConnectUser={setConnectUser} />
     

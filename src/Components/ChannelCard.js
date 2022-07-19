@@ -6,7 +6,6 @@ export default function ChannelCard(props) {
         <h6>id: {props.id}</h6>
         <h6>type: {props.type}</h6>
         <h6>Created by: {props.createdBy}</h6>
-        {/* <Link to={`/details/${props.planetId}`}>Details</Link> */}
       </div>
     </div>
   );
