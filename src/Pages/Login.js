@@ -4,10 +4,10 @@ import { Form } from "react-bootstrap";
 import {Col} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import {Button} from "react-bootstrap";
-import { apiUrl } from "../Config/constants";
+import { apiUrl } from "../Config/constants.js";
 import { StreamChat } from "stream-chat";
 import { useNavigate } from 'react-router-dom'
-import { getTokenAndConnectUser } from "../Utils/getTokenAndConnectUser";
+import { getTokenAndConnectUser } from "../Utils/getTokenAndConnectUser.js";
 
 
 
@@ -39,10 +39,7 @@ export default function Login ({setConnectUser}){
     
     const submitForm = (event) => {
       event.preventDefault();
-    // loginUser(userId)
-    // history("/chat")
-        // dispatch(createLogin(userId));
-      console.log(" userId",userId) 
+      // console.log(" userId",userId) 
         getTokenAndConnectUser(userId, setConnectUser, setError);
       };
 

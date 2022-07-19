@@ -1,6 +1,6 @@
 import axios from "axios";
 import { StreamChat } from "stream-chat";
-import { apiUrl } from "../Config/constants";
+import { apiUrl } from "../Config/constants.js";
 
 const PORT = process.env.REACT_APP_PORT;
 // const API_KEY = process.env.REACT_APP_API_KEY;
