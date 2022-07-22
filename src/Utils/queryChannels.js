@@ -12,19 +12,19 @@ export const queryChannels = async (setChannel, setChannels, userId) => {
     console.log("what is userId !!!!!!!!!!!!!", userId);
     // console.log("what is chatClient", chatClient);
 
-    const filter = {
-      $or: [
-        { type: "livestream" },
-        { type: "messaging", members: { $in: [userId] } },
-      ],
-    };
+    // const filter = {
+    //   $or: [
+    //     { type: "team",members:{ $in: ["new"]} },
+    //     { type: "messaging", members: { $in: [userId] } },
+    //   ],
+    // };
 
-    // const filter = { members: { $in: [userId] } };
+    const filter = { members: { $in: [userId] } };
 
     const sort = { last_message_at: -1 };
 
-    const result = await chatClient.queryChannels(filter, sort);
-    console.log("queryChannels called");
+    const result = await chatClient.queryChannels(filter, sort, {offset:0, limit:30, message_limit:300});
+    console.log("queryChannels called result", result);
     setChannels(result);
     setChannel(result[0]);
   } catch (error) {

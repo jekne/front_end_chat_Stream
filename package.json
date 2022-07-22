@@ -15,6 +15,7 @@
     "react-scripts": "5.0.1",
     "stream-chat": "^6.7.3",
     "stream-chat-css": "^1.0.23",
+    "stream-chat-react": "^9.1.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -41,9 +42,5 @@
       "last 1 safari version"
     ]
   },
-  
-
   "type": "module"
-
 }
-

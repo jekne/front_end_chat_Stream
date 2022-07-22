@@ -39,7 +39,7 @@ export default function Login ({setConnectUser}){
     
     const submitForm = (event) => {
       event.preventDefault();
-      // console.log(" userId",userId) 
+      // console.log(" errorrrrrr",error) 
         getTokenAndConnectUser(userId, setConnectUser, setError);
       };
 
@@ -65,7 +65,7 @@ export default function Login ({setConnectUser}){
             Log in
           </Button>
         </Form.Group>
-        <Link to='/signup' style={{ textAlign: "center" }}>
+        <Link to='/' style={{ textAlign: "center" }}>
           Click here to sign up
         </Link>
         </Form>

@@ -7,47 +7,42 @@ import { Routes, Route } from 'react-router-dom';
 import ChatPage from './Pages/ChatPage.js';
 import { useState } from 'react';
 import { Chat, Channel, ChannelHeader, MessageInput, MessageList, Thread, Window } from 'stream-chat-react';
+import { StreamChat } from 'stream-chat';
+
+import 'stream-chat-react/dist/css/index.css';
 
 
-
+//test
 function App() {
-  return (
-    <div className="App">
-     <Routes>
+  const [connectUser, setConnectUser] = useState("");
 
-<Route exact path="/" element={<Login />} />
-<Route path="/chat" element={<ChatPage/>}/>
-<ChannelHeader/>
+  console.log("what is connectUser!!!!!!!!!?", connectUser);
 
-</Routes>
-    </div>
-  );
+ return connectUser ? (
+    <ChatPage connectUser={connectUser} />
+  ) : (
+    <Login setConnectUser={setConnectUser} />
+    
+  ); 
+
+
 }
-
-
-//working 
-
 //test
 
 // function App() {
-//   const [connectUser, setConnectUser] = useState("");
+//   return (
+//     <div className="App">
+//      <Routes>
 
-//   console.log("what is connectUser!!!!!!!!!?", connectUser);
+// <Route exact path="/" element={<Login />} />
+// <Route path="/chat" element={<ChatPage/>}/>
 
-//   return connectUser ? (
-//     <ChatPage connectUser={connectUser} />
-//   ) : (
-//     <Login setConnectUser={setConnectUser} />
-    
+// </Routes>
+// <Chat/>
+//     </div>
 //   );
 // }
-
-
-//test
-
-
-
-
+//working 
 
 
 export default App;
