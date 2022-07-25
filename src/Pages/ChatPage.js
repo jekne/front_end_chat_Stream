@@ -66,13 +66,13 @@ export default function ChatPage ({connectUser}){
 
   // Subscribe to listen events type: "new message" on channels
   useEffect(() => {
-    console.log(`Start to listening new messages on channel: ${channel.cid}`);
+    console.log(`Start to listening new messages on channel: ${channel?.cid}`);
 
     channel?.on("message.new", (event) => {
       // console.log("what's event.cid?", event.cid);
       // console.log("what's event channel.cid?", channel.cid);
       setEvent(event);
-      // setmakeItRender(event);
+      setmakeItRender(event);
     });
   }, [messages]);
 
@@ -123,20 +123,20 @@ export default function ChatPage ({connectUser}){
         }}
         >
             <h1 style={{ fontSize: "25px" }}> {channel.id}</h1>
-              <h3 style={{ fontSize: "15px" }}>{channel.state.unreadCount}</h3>
-               <div style={{ fontSize: "10px" }}>Last message sent:
-              (
+              <h3 style={{ fontSize: "15px" }}>Unread Count:{channel.state.unreadCount}</h3>
+               <div style={{ fontSize: "15px" }}>Last message sent:
+              
               {channel?.state.messages[
                 channel?.state.messages.length - 1
-              ]?.text.substring(0, 10)}
-              )
+              ]?.text.substring(0, 30)}
+              
             </div>
           </div>
         ))}
         </div>
 )}
   <h3> #{channel?.id}</h3>
-        <h6> watchersssssss{watchers ? `Users online ${watchers}` : null}</h6>
+        <h6> Watchers: {watchers ? `Users online ${watchers}` : null}</h6>
 
 <h2> messages from the channel should appear here</h2>
    <div>{!messages ? ("Loading ...") :(
@@ -147,7 +147,7 @@ export default function ChatPage ({connectUser}){
         className={message?.user.id === userId ? "text-right" : "text-left"}
         >
         <div>
-        {`${message?.user.id} > ${message?.text} (${moment(
+        {`${message?.user.id} : ${message?.text} (${moment(
             message?.created_at
             ).format("ll")} at ${moment(message?.created_at).format(
                 "HH:mm"
