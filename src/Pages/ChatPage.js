@@ -2,6 +2,8 @@ import { useState,useEffect } from "react";
 import { queryChannels } from "../Utils/queryChannels.js";
 import moment from "moment";
 
+
+
 export default function ChatPage ({connectUser}){
 
       const userId = connectUser.me.id;
@@ -94,9 +96,10 @@ export default function ChatPage ({connectUser}){
 
   console.log(" the watchers!!!", watchers)
     return (
-        <div>
+   <div className="col-3 p-2 " style={{ height: "100%" }}>
+      <div className="text-center border" style={{ height: "50%" }}>
             <h1> CHAT PAGE TO RENDER CHAT</h1>
-             <h3>Welcome back <font size="5" color="blue" face="arial"> <i> {userId} !</i></font></h3>
+             <h3>Welcome back <font size="5" color="blue" face="arial"><strong> <i> {userId} !</i></strong></font></h3>
              <h4>role: {userId?.me?.role}</h4>
                   {/* <div>{!channels ? ("Loading ..."):(
                     <div>{channels.map((x)=>{
@@ -110,7 +113,7 @@ export default function ChatPage ({connectUser}){
                       } )}</div>
                     )} </div> */}
                  <div className="text-center border" style={{ height: "50%" }}>
-        <h4>Channels</h4>
+        <h4 className="channel">Channels</h4>
    <div>{!channels ? ("Loading ...") :(
      <div>   {channels.map((channel, index) => (
        <div
@@ -202,7 +205,7 @@ export default function ChatPage ({connectUser}){
     <div>
 
 
-
+</div>
       
     </div>
         </div>

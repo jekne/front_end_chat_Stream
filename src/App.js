@@ -10,6 +10,8 @@ import { Chat, Channel, ChannelHeader, MessageInput, MessageList, Thread, Window
 import { StreamChat } from 'stream-chat';
 
 import 'stream-chat-react/dist/css/index.css';
+import RebuildingChatPage from './Pages/RebuildingChatPage.js';
+import FormingChat from './Pages/FormingChat.js';
 
 
 //test
@@ -18,14 +20,17 @@ function App() {
 
   console.log("what is connectUser!!!!!!!!!?", connectUser);
 
- return connectUser ? (
-    <ChatPage connectUser={connectUser} />
+ return <div className='containnerApp' > {connectUser ? (
+//  <html>
+//   <head><title>Stream Chat</title>
+    <FormingChat connectUser={connectUser} />
+//  </head>
+//  </html>
   ) : (
     <Login setConnectUser={setConnectUser} />
     
-  ); 
-
-
+  )
+  }</div>
 }
 //test
 

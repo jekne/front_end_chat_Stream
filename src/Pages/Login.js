@@ -19,40 +19,24 @@ export default function Login ({setConnectUser}){
     const [userId, setUserId] = useState("");
       const [error, setError] = useState(null);
 
-    // let history = useNavigate()
-
-
-    // const loginUser = async (userId) => {
-   
-    //     const response = await axios.get(`${apiUrl}/token?userId=${userId}`);
-    //         const token= response.data.token
-
-    // //   console.log("my response", response.data)
-    //     const chatClient = await client.connectUser(
-    //         { id: userId },
-    //       token
-    //       );
-    //       console.log(" chat client",chatClient)
-    //     return chatClient;
-    //   };
-// console.log("the login user ",loginUser)
     
     const submitForm = (event) => {
       event.preventDefault();
-      // console.log(" errorrrrrr",error) 
+  
         getTokenAndConnectUser(userId, setConnectUser, setError);
       };
 
 
     return (
-    <div>
-        <h1>Welcome to the STREAM chat</h1>
-        <Container>
+    <div className="backgroundPicture">
+        <img className="logoStream" src="https://user-images.githubusercontent.com/24237865/138428440-b92e5fb7-89f8-41aa-96b1-71a5486c5849.png" alt="stream"></img>
+
+        <Container className="ContainerLogin">
         <Form as={Col} md={{ span: 6, offset: 3 }} className='mt-5'>
-        <h1 className='mt-5 mb-5'>Login</h1>
+        {/* <h1 className='mt-5 mb-5'>LOGIN</h1> */}
         <Form.Group controlId='formBasicEmail'>
-          <Form.Label>Name </Form.Label>
-          <Form.Control
+          <Form.Label className="name"><strong><h1>USER NAME</h1></strong> </Form.Label>
+          <Form.Control style={{width:"200px", height:"25px"}}
             value={userId}
             onChange={(event) => setUserId(event.target.value)}
             type='email'
@@ -61,15 +45,16 @@ export default function Login ({setConnectUser}){
           />
         </Form.Group> 
         <Form.Group className='mt-5'>
-          <Button variant='primary' type='submit' onClick={submitForm}>
-            Log in
+          <Button style={{ textAlign: "center" }} variant='primary' type='submit' onClick={submitForm}>
+            LOGIN
           </Button>
         </Form.Group>
         <Link to='/' style={{ textAlign: "center" }}>
-          Click here to sign up
+          Click to refresh
         </Link>
         </Form>
         </Container>
+        
     </div>
     )
 }
