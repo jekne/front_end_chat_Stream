@@ -23,7 +23,12 @@ export const queryChannels = async (setChannel, setChannels, userId) => {
 
     const sort = { last_message_at: -1 };
 
-    const result = await chatClient.queryChannels(filter, sort, {offset:0, limit:30, message_limit:300});
+    const result = await chatClient.queryChannels(filter, sort, {
+      offset: 0,
+      limit: 30,
+      message_limit: 300,
+    });
+    ///change for ten and have less message
     console.log("queryChannels called result", result);
     setChannels(result);
     setChannel(result[0]);
@@ -50,11 +55,10 @@ export const queryChannels = async (setChannel, setChannels, userId) => {
 //     setChannels(result);
 //     setChannel(result[0]);
 
-    
 //   } catch (error) {
 //       console.log("query channels failed", error);
-    
+
 //   }
 // }
 
-queryChannels("johann").then((r)=>console.log(r))
+queryChannels("johann").then((r) => console.log(r));

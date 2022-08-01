@@ -42,7 +42,7 @@ export default function FormingChat({ connectUser }) {
   // Set messages at first render and every time channel changes.
   useEffect(() => {
     console.log("Loading channel messages...");
-    setMessages(channel?.state.messages);
+    setMessages(channel?.state.messages.slice(0, 10));
     console.log("Cleaning unread messages");
     channel?.markRead();
   }, [channel]);
@@ -117,7 +117,7 @@ export default function FormingChat({ connectUser }) {
     setSendMessage("");
     // console.log("send message from chat page",sendMessage)
     // console.log("CHANNEL from chat page", channel);
-    // console.log("my messages from chat page", messages);
+    console.log("my messages from chat page", messages);
   };
 
   //Upload Images
@@ -128,19 +128,26 @@ export default function FormingChat({ connectUser }) {
     console.log(upload);
   }
 
+  //letters
+
   return (
     <div className="containerFormingMain">
       <div className="topOftheChat">
-        <h3>
-          Welcome back{" "}
-          <p>
-            {" "}
-            <i> {userId} !</i>
-          </p>
-        </h3>
-
-        <h3> LISTENING CHANNEL: {channel?.id}</h3>
-        <h4> Watchers: {watchers ? `Users online ${watchers}` : null}</h4>
+        <img
+          src="https://noonies.hackernoon.com/static/logo-stream.png"
+          style={{ width: "250px" }}
+        />
+        <div className="spacesWelcomeWatchers">
+          <h1
+            style={{ width: "500px", paddingLeft: "350px", fontSize: "40px" }}
+          >
+            Welcome back{" "}
+            <i>
+              {" "}
+              <strong style={{ color: "blue" }}>{userId}! </strong>
+            </i>
+          </h1>
+        </div>
       </div>
 
       <div className="containerChannelAndDisplay">
@@ -180,21 +187,30 @@ export default function FormingChat({ connectUser }) {
 
         <div className="messageAndDisplaychat">
           <div className="textMessages">
+            <div className="channelAndWatchers">
+              <h3> LISTENING CHANNEL: {channel?.id}</h3>
+              <h4> Watchers: {watchers ? `Users online ${watchers}` : null}</h4>
+            </div>
             {messages?.map((message, index) => (
-              <div
-                key={index}
-                className={
-                  message?.user?.id === userId ? "text-right" : "text-left"
-                }
-              >
-                {message?.attachments.map((att, index) => {
-                  return <img key={index} src={att.image_url} />;
-                })}
-                {`${message?.user?.id} : ${message?.text} (${moment(
-                  message?.created_at
-                ).format("ll")} at ${moment(message?.created_at).format(
-                  "HH:mm"
-                )})`}
+              <div className="mainContainerText" key={index}>
+                <div
+                  className={
+                    message?.user?.id === userId ? "text-right" : "text-left"
+                  }
+                >
+                  <p className="userIdMessages">{message?.user?.id}</p>
+                  <div className="msg-bubble">
+                    <p>{message?.text}</p>
+                    <p className="timeMessages">
+                      {` ${moment(message?.created_at).format(
+                        "ll"
+                      )} at ${moment(message?.created_at).format("HH:mm")}`}
+                    </p>
+                  </div>
+                  {message?.attachments.map((att, index) => {
+                    return <img key={index} src={att.image_url} />;
+                  })}
+                </div>
               </div>
             ))}
           </div>
@@ -210,11 +226,14 @@ export default function FormingChat({ connectUser }) {
                     placeholder="type your message..."
                     value={sendMessage}
                     onChange={(e) => setSendMessage(e.target.value)}
+                    style={{ width: "900px", height: "40px" }}
                   />
                 </form>
               </div>
-              <input type="file" id="real-file" hidden="hidden" />
-              <input type="file" onChange={getUrl}></input>
+              <div>
+                <input type="file" id="real-file" hidden="hidden" />
+                <input type="file" onChange={getUrl}></input>
+              </div>
             </div>
           </div>
         </div>

@@ -53,9 +53,10 @@ element.style {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border: 3px solid #dc1616;
+  border: 3px solid #838282;
   margin-left: 150px;
   margin-right: 150px;
+  background-color: #e8f0be;
 }
 
 .holdingChannels {
@@ -64,13 +65,13 @@ element.style {
 }
 
 .messageAndDisplaychat {
-  border: 3px solid #ebf718;
+  /* border: 3px solid #838282; */
   display: flex;
   flex-direction: column;
-  margin-right: 10px;
-  margin-left: 10px;
+  /* margin-right: 10px;
+  margin-left: 10px; */
   height: 100%;
-  width: 80%;
+  width: 82%;
 }
 
 .textMessages {
@@ -79,31 +80,31 @@ element.style {
 }
 
 .channelBoxes {
-  border: 3px solid #0f0e0e;
+  border: 3px solid #838282;
   height: 200px;
   width: 250px;
+  background-color: #069299;
 }
 
 .topOftheChat {
-  border: 3px solid #069299;
-  height: auto;
-  width: auto;
+  border: 3px solid #838282;
   margin-left: 150px;
   margin-right: 150px;
-  height: auto;
+  height: 100px;
   width: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-top: 20px;
-}
-
-.topOftheChat h3 {
-  margin: 0;
+  background-color: #c0ba9d;
 }
 
 .sendMessages {
-  border: 3px solid #08b62a;
+  border: 3px solid #090909;
   margin-top: 10px;
+  width: auto;
+  height: auto;
+  padding-top: 0;
+  background-color: #747474;
 }
 
 /* BUTTON UPLOAD IMAGES: */
@@ -111,7 +112,7 @@ element.style {
 #custom-button {
   padding: 10px;
   color: white;
-  background-color: #009578;
+  background-color: #838282;
   border: 1px solid #000;
   border-radius: 5px;
   cursor: pointer;
@@ -127,15 +128,62 @@ element.style {
   color: rgb(14, 14, 14);
 }
 
-p {
+.p::first-letter {
   size: 5;
   color: blue;
   font: arial;
+
+  /* background-image: url("https://image.flaticon.com/icons/svg/327/327779.svg"); */
 }
 
 .text-right {
   text-align: right !important;
+  /* border: 1px solid #000;
+  max-width: 200px;
+  padding: 15px;
+  border-radius: 15px; */
 }
 .text-left {
   text-align: left !important;
+}
+.spacesWelcomeWatchers {
+  /* justify-content: flex-end; */
+  /* border: 1px solid #000; */
+  flex-direction: column;
+}
+
+.userIdMessages::first-letter {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: brown;
+}
+
+.timeMessages {
+  color: #747474;
+  display: block;
+  font-size: 10px;
+  margin: 3px 0 0;
+}
+
+.msg-bubble {
+  /* max-width: 450px; */
+  padding: 15px;
+  border-radius: 15px;
+  /* background: var(--left-msg-bg); */
+  /* justify-content: center; */
+  border: 1px solid #000;
+  background-color: #08b62a;
+}
+
+/* .mainContainerText {
+  border: 1px solid #000;
+  border-radius: 10px;
+} */
+
+.channelAndWatchers {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
